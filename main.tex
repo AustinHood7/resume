@@ -1,0 +1,274 @@
+%-------------------------------------
+% Author : Austin Hood
+%-------------------------------------
+
+\documentclass[letterpaper,12pt]{article}[leftmargin=*]
+
+\usepackage[empty]{fullpage}
+\usepackage{enumitem}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage[xetex]{hyperref}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[pdftex]{hyperref}
+\fi
+\usepackage{fontawesome}
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage{anyfontsize}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+%-------------------------------------------------- SETTINGS HERE --------------------------------------------------
+% Header settings
+\def \fullname {Austin Hood}
+\def \subtitle {}
+
+\def \linkedinicon {\faLinkedin}
+\def \linkedinlink {https://linkedin.com/in/austin-hood7}
+\def \linkedintext {/Austin-Hood7}
+
+\def \phoneicon {\faPhone}
+\def \phonetext {+1-954-665-7055}
+
+\def \emailicon {\faEnvelope}
+\def \emaillink {mailto:austinmhood@live.com}
+\def \emailtext {austinmhood@Live.com}
+
+\def \githubicon {\faGithub}
+\def \githublink {https://github.com/AustinHood7}
+\def \githubtext {/AustinHood7}
+
+\def \websiteicon {\faGlobe}
+\def \websitelink {https://amhoodPortfolio.weebly.com/}
+\def \websitetext {amhoodPortfolio.com}
+
+\def \headertype {\doublecol} % \singlecol or \doublecol
+
+% Misc settings
+\def \entryspacing {-0pt}
+
+\def \bulletstyle {\faAngleRight}
+
+% Define colours
+\definecolor{primary}{HTML}{000000}
+\definecolor{secondary}{HTML}{0D47A1}
+\definecolor{accent}{HTML}{263238}
+\definecolor{links}{HTML}{1565C0}
+
+%------------------------------------------------------------------------------------------------------------------- 
+
+% Defines to make listing easier
+\def \linkedin {\linkedinicon \hspace{3pt}\href{\linkedinlink}{\linkedintext}}
+\def \phone {\phoneicon \hspace{3pt}{ \phonetext}}
+\def \email {\emailicon \hspace{3pt}\href{\emaillink}{\emailtext}}
+\def \github {\githubicon \hspace{3pt}\href{\githublink}{\githubtext}}
+\def \website {\websiteicon \hspace{3pt}\href{\websitelink}{\websitetext}}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.1in}
+
+% Define the link colours
+\hypersetup{
+    colorlinks=true,
+    urlcolor=links,
+}
+
+% Set the margin alignment 
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%-------------------------
+% Custom commands
+
+% Sections
+\renewcommand{\section}[2]{\vspace{5pt}
+  \colorbox{secondary}{\color{white}\raggedbottom\normalsize\textbf{{#1}{\hspace{7pt}#2}}}
+}
+
+% Entry start and end, for spacing
+\newcommand{\resumeEntryStart}{\begin{itemize}[leftmargin=2.5mm]}
+\newcommand{\resumeEntryEnd}{\end{itemize}\vspace{\entryspacing}}
+
+% Itemized list for the bullet points under an entry, if necessary
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=4.5mm]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Resume item
+\renewcommand{\labelitemii}{\bulletstyle}
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+% Entry with title, subheading, date(s), and location
+\newcommand{\resumeEntryTSDL}[4]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+      \textit{\color{accent}\small#3} & \textit{\color{accent}\small#4} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry with title and date(s)
+\newcommand{\resumeEntryTD}[2]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry for special (skills)
+\newcommand{\resumeEntryS}[2]{
+  \item[]\small{
+    \textbf{\color{primary}#1 }{ #2 \vspace{-6pt}}
+  }
+}
+
+% Double column header
+\newcommand{\doublecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[c]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l@{\hspace{1.5em}}l}
+        {\small#4} & {\small#1} \\
+        {\small#5} & {\small#2} \\
+        {\small#6} & {\small#3}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+% Single column header
+\newcommand{\singlecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[b]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l}
+        {\small#1} \\
+        {\small#2} \\
+        {\small#3} \\
+        {\small#4} \\
+        {\small#5} \\
+        {\small#6}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+\begin{document}
+%-------------------------------------------------- BEGIN HERE --------------------------------------------------
+
+%---------------------------------------------------- HEADER ----------------------------------------------------
+
+\headertype{\linkedin}{\github}{\website}{\phone}{\email}{} % Set the order of items here
+\vspace{-10pt} % Set a negative value to push the body up, and the opposite
+
+%-------------------------------------------------- EDUCATION --------------------------------------------------
+\section{\faGraduationCap}{Education}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Florida Gulf Coast University}{2020 -- 2023(expected)}
+      {BA Software Engineering (3.0+ GPA) w/ minor in Mathematics}{Ft. Myers, FL}
+  \resumeEntryEnd
+
+%-------------------------------------------------- EXPERIENCE --------------------------------------------------
+\section{\faPieChart}{Experience}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {CatStealers.com}{May 2021 -- present}
+      {Freelance Software Developer}{Ft. Myers(remote), FL}
+    \resumeItemListStart
+      \resumeItem {Developed C\# scripts in Unity}
+      \resumeItem {Performed requirements elicitation and analysis}
+      \resumeItem {Responsible for Game Design and Delivery}
+      \resumeItem {Worked with both 3D and 2D assets in order to deliver a high quality product}
+      \resumeItem {Effectively communicated with both an Art Team as well as management}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Starbucks}{July 2015 -- Present}
+      {Barista}{Estero, FL}
+    \resumeItemListStart
+      \resumeItem {Communicated in a fast paced work environment while managing multiple tasks simultaneously}
+      \resumeItem {Built strong interpersonal skills through communicating with both customers and co-workers}
+      \resumeItem {Trained new hires and communicated new ideas and methods for completing tasks}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {United Parcel Service}{November 2021 -- January 2022}
+      {Driver Helper}{Ft. Myers, FL}
+    \resumeItemListStart
+      \resumeItem {Completed physically demanding work days while operating in a fast paced environment}
+      \resumeItem {Followed detailed instructions in order to quickly complete a task}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Blue Pointe Oyster Bar}{2017 -- 2018}
+      {Food Runner}{Ft. Myers, FL}
+    \resumeItemListStart
+        \resumeItem {Built strong customer-service skills}
+        \resumeItem {Acted in multiple positions in order to improve the team-environment}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+
+%-------------------------------------------------- PROJECTS --------------------------------------------------
+\section{\faFlask}{Projects}
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {Assembly Light Project}{}
+    \resumeItemListStart
+      \resumeItem {An Arduino Uno R3 project that used circuits and LEDs to display light patterns in the spirit of the holidays}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {Genshin Impact Slot Roller}{}
+    \resumeItemListStart
+      \resumeItem {A slot machine game made in Unity and using C\# for scripting(Work In Progress)}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {Resume Website}{}
+    \resumeItemListStart
+      \resumeItem {A website for potential employers to visit and see what I can offer their company(Work In Progress). Written using only HTML and CSS/Sass}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+%-------------------------------------------------- PROGRAMMING SKILLS --------------------------------------------------
+\section{\faGears}{Skills}
+ \resumeEntryStart
+  \resumeEntryS{Languages } {C\#, C++, Java, HTML/CSS}
+  \resumeEntryS{Technologies } {Unity Game Engine, Fusion 360, Photoshop, Jira/Confluence}
+ \resumeEntryEnd
+
+\end{document}
